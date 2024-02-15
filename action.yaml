@@ -1,0 +1,26 @@
+name: "easy-python-version"
+
+description: "Replaces __version__ in your __init__.py with that found in VCS"
+
+branding:
+  color: red
+  icon: git-branch
+
+steps:
+
+  - name: Install python 
+    uses: actions/setup-python@v2
+    with:
+      python-version: "3.9" 
+
+  - uses: actions/checkout@v3
+    with:
+      fetch-depth: 0
+
+  - uses: mtkennerly/dunamai-action@v1.3.0
+    with:
+      env-var: MY_VERSION
+      args: --style pep440 --no-metadata
+
+  - run: echo $MY_VERSION
+     

@@ -1,0 +1,17 @@
+name: test
+
+on:
+  - push
+  - pull_request
+
+jobs:
+
+  test:
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+
+    steps:
+      - name: "test self"
+        uses: ./
