@@ -6,21 +6,25 @@ branding:
   color: red
   icon: git-branch
 
-steps:
+runs: 
 
-  - name: Install python 
-    uses: actions/setup-python@v2
-    with:
-      python-version: "3.9" 
+  steps:
 
-  - uses: actions/checkout@v3
-    with:
-      fetch-depth: 0
+    - name: Install python 
+      uses: actions/setup-python@v2
+      with:
+        python-version: "3.9" 
 
-  - uses: mtkennerly/dunamai-action@v1.3.0
-    with:
-      env-var: MY_VERSION
-      args: --style pep440 --no-metadata
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
 
-  - run: echo $MY_VERSION
-     
+    - name: Fetch version
+      uses: mtkennerly/dunamai-action@v1.3.0
+      with:
+        env-var: MY_VERSION
+        args: --style pep440 --no-metadata
+
+    - name: Print a test
+      run: echo "$MY_VERSION"
