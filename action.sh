@@ -14,5 +14,5 @@ else
     echo "__version__ = $MY_VERSION" > "$version_path"
 fi
 
-echo __version__ looks like:
+echo __version__.py at "$version_path" looks like:
 cat "$version_path"
