@@ -6,6 +6,15 @@ branding:
   color: red
   icon: git-branch
 
+inputs:
+
+  init_path:
+    description: |
+      Path, relative to the root directory of your respository, to the
+      __init__.py file of your project.
+    required: true 
+
+
 runs: 
 
   using: composite
@@ -27,6 +36,14 @@ runs:
         env-var: MY_VERSION
         args: --style pep440 --no-metadata
 
-    - name: Print a test
+    - name: Print verion
       shell: bash
       run: echo "$MY_VERSION"
+
+    - name: Replace verion in __init__.py 
+      shell: bash
+      run: bash action.sh
+      env:
+        ACTION_PATH: ${{ github.action_path }}
+        INIT_PATH: ${{ inputs.init_path }}
+        VERSION: ${{ MY_VERSION }}
