@@ -27,4 +27,5 @@ runs:
         args: --style pep440 --no-metadata
 
     - name: Print a test
+      shell: bash
       run: echo "$MY_VERSION"
