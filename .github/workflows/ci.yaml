@@ -21,3 +21,5 @@ jobs:
 
       - name: "test self"
         uses: ./
+        with:
+          init_path: "test123"
