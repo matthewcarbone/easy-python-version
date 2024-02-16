@@ -46,3 +46,4 @@ runs:
       env:
         ACTION_PATH: ${{ github.action_path }}
         INIT_PATH: ${{ inputs.init_path }}
+        GITHUB_WORKSPACE: ${{ github.workspace }}
