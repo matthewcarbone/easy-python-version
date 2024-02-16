@@ -19,8 +19,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: "test self"
+      - name: "test self on tag push true"
         uses: ./
         with:
           package_path: "./"
           on_tag_push_only: true
+
+      - name: "test self on tag push false"
+        uses: ./
+        with:
+          package_path: "./"
+          on_tag_push_only: false
