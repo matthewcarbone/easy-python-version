@@ -8,10 +8,10 @@ branding:
 
 inputs:
 
-  init_path:
+  package_path:
     description: |
-      Path, relative to the root directory of your respository, to the
-      __init__.py file of your project.
+      Path, relative to the root directory of your respository, to the Python
+      package, to which `__version__.py` will be written.
     required: true 
 
 
@@ -25,11 +25,6 @@ runs:
       with:
         python-version: "3.9" 
 
-    # - name: Checkout
-    #   uses: actions/checkout@v3
-    #   with:
-    #     fetch-depth: 0
-
     - name: Fetch version
       uses: mtkennerly/dunamai-action@v1.3.0
       with:
@@ -40,10 +35,10 @@ runs:
       shell: bash
       run: echo "$MY_VERSION"
 
-    - name: Replace verion in __init__.py 
+    - name: Write __version__.py 
       shell: bash
       run: bash action.sh
       env:
         ACTION_PATH: ${{ github.action_path }}
-        INIT_PATH: ${{ inputs.init_path }}
+        PACKAGE_PATH: ${{ inputs.package_path }}
         GITHUB_WORKSPACE: ${{ github.workspace }}
