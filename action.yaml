@@ -46,4 +46,3 @@ runs:
       env:
         ACTION_PATH: ${{ github.action_path }}
         INIT_PATH: ${{ inputs.init_path }}
-        VERSION: "$MY_VERSION" 
